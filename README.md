@@ -9,9 +9,10 @@ Are you tired of using hardware monitor apps on Windows that are complicated and
 -
 
 # Installation
+This program needs to be run in administrator to work properly because of WinTMP requiring privileges to read hardware temperatures. You can run without administrator but you wouldn’t be able to see temps
 
-
-# Prerequisite (I think you might need it I’m not sure but it probably works without just a guess but if the program doesn’t work install this .NET 10.0 Framework
+# Prerequisite 
+(I think you might need it I’m not sure but it probably works without just a guess but if the program doesn’t work install this .NET 10.0 Framework
 https://dotnet.microsoft.com/en-us/download/dotnet/10.0
 
 # License
