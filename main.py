@@ -21,7 +21,7 @@ while True:
     cpu_temp = WinTmp.CPU_Temp()
     gpu_temp = WinTmp.GPU_Temp()
     the_time = now.strftime("%I:%M %p")
-    monitor_list.extend([cpu, ram, cpu_temp, gpu_temp,  ])
+    monitor_list.extend([cpu, ram, cpu_temp, gpu_temp, the_time])
 
 
     print(f"CPU Usage: {cpu}%")
@@ -29,6 +29,6 @@ while True:
     print(f"CPU Temp: {cpu_temp} °C")
     print(f"GPU Temp: {gpu_temp} °C")
     print(the_time)
-    # print(*monitor_list, sep=", ")
+    print(*monitor_list, sep=", ")
     
     time.sleep(3)
