@@ -2,6 +2,7 @@ import psutil
 import time
 import os
 from datetime import datetime
+import WinTmp
 
 now = datetime.now()
 current_time = now.time()
@@ -17,5 +18,7 @@ while True:
 
     print(f"CPU Usage: {cpu}%")
     print(f"Ram Usage: {ram}%")
+    print(f"CPU Temp: {WinTmp.CPU_Temp()} °C")
     print(now.strftime("%I:%M %p"))
+    
     time.sleep(3)
