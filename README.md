@@ -5,7 +5,7 @@ Are you tired of using hardware monitor apps on Windows that are complicated and
 # Features 
 -
 -
--
+- Lock your temperature cap before the program notifies you a warning that you reached that temperature keeping your system aware and safe
 -
 
 # Installation
