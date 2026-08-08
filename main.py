@@ -19,6 +19,7 @@ while True:
     print(f"CPU Usage: {cpu}%")
     print(f"Ram Usage: {ram}%")
     print(f"CPU Temp: {WinTmp.CPU_Temp()} °C")
+    print(f"GPU Temp: {WinTmp.GPU_Temp()} °C")
     print(now.strftime("%I:%M %p"))
     
     time.sleep(3)
