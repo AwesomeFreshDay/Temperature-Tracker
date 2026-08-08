@@ -20,7 +20,7 @@ while True:
     ram = psutil.virtual_memory().percent
     cpu_temp = WinTmp.CPU_Temp()
     gpu_temp = WinTmp.GPU_Temp()
-    # monitor_list.extend([cpu, ram, ])
+    monitor_list.extend([cpu, ram, ])
 
 
     print(f"CPU Usage: {cpu}%")
