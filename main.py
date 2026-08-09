@@ -79,7 +79,7 @@ btn.pack()
 # https://www.tutorialkart.com/python/tkinter/how-to-allow-only-integer-in-entry-widget-in-tkinter-python/
 
 def validate_input(P):
-    if P.isdigit() or P == "":
+    if P.isdigit() or P == "" or len(P) >= 3:
         return True
     return False
 
