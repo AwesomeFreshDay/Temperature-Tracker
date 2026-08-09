@@ -14,14 +14,14 @@ window.geometry('400x400')
 
 def update_cpu_usage():
     cputest = psutil.cpu_percent(interval=None)
-    cpu_label['text'] = cputest
+    cpu_label['text'] = f"CPU Usage: {cputest}"
     window.after(1000, update_cpu_usage)
 
 
 def message():
     messagebox.showinfo("Test", "Simple messagebox")
 
-cpu_label = Label(window, text=f"Your CPU Usage is ")
+cpu_label = Label(window)
 cpu_label.pack()
 update_cpu_usage()
 
