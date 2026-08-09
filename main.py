@@ -31,10 +31,23 @@ def update_cpu_temp():
 cpu_temp_label = Label(window)
 cpu_temp_label.pack()
 update_cpu_temp()
+
+# Update GPU temp after 1 second
+
+def update_gpu_temp():
+    gpu_temp = WinTmp.GPU_Temp()
+    gpu_temp_label['text'] = f"GPU Temp: {gpu_temp}° C"
+    window.after(1000, update_gpu_temp)
+
+gpu_temp_label = Label(window)
+gpu_temp_label.pack()
+update_gpu_temp()
+
+
     
 
 
-# WinTmp.GPU_Temp()
+
 
 def message():
     messagebox.showinfo("Test", "Simple messagebox")
