@@ -85,7 +85,7 @@ def submit():
     print(f"The temperature is {temp}")
 
 # Create a label for the user to type in
-temp_label = Label(window, text = 'Temp Cap')
+temp_label = Label(window, text = 'Temp Cap ° C')
 temp_label.pack()
 
 # Create entry for the label input to send its data to the terminal
@@ -95,6 +95,9 @@ temp_entry.pack()
 # Create submit button to submit function
 sub_btn = Button(window, text = 'Submit', command = submit)
 sub_btn.pack()
+
+if temp_cap) > 120:
+    print("ok")
 
 
 window.mainloop()
