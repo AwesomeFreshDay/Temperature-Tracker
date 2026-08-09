@@ -83,7 +83,6 @@ temp_cap = StringVar()
 def submit():
     temp = temp_cap.get()
     print(f"The temperature is {temp}")
-    temp_cap.set("")
 
 # Create a label for the user to type in
 temp_label = Label(window, text = 'Temp Cap')
