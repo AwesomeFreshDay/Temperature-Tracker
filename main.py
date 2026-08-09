@@ -83,6 +83,8 @@ temp_cap = StringVar()
 def submit():
     temp = temp_cap.get()
     print(f"The temperature is {temp}")
+    if temp > 120:
+        print("ok")
 
 # Create a label for the user to type in
 temp_label = Label(window, text = 'Temp Cap ° C')
@@ -96,8 +98,7 @@ temp_entry.pack()
 sub_btn = Button(window, text = 'Submit', command = submit)
 sub_btn.pack()
 
-if temp_cap) > 120:
-    print("ok")
+
 
 
 window.mainloop()
