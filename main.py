@@ -13,7 +13,7 @@ window.title('Simple Desktop app')
 window.geometry('400x400')
 
 def update_cpu_usage():
-    cputest = psutil.cpu_percent(interval=1)
+    cputest = psutil.cpu_percent(interval=None)
     cpu_label['text'] = cputest
     window.after(1000, update_cpu_usage)
 
