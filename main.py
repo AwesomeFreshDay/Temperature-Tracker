@@ -6,7 +6,7 @@ import WinTmp
 import csv
 from tkinter import *
 from tkinter import messagebox
-
+cputest = psutil.cpu_percent(interval=1)
 window = Tk()
 window.title('Simple Desktop app')
 window.geometry('400x400')
@@ -14,7 +14,7 @@ window.geometry('400x400')
 def message():
     messagebox.showinfo("Test", "Simple messagebox")
 
-text = Label(window, text='Simple Text')
+text = Label(window, text=f"Your CPU Usage is {cputest}")
 text.pack()
 
 btn = Button(window, text="Simple button", command=message)
