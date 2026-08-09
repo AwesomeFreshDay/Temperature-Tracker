@@ -74,6 +74,17 @@ def message():
 
 btn = Button(window, text="Simple button", command=message)
 btn.pack()
+# Function to validate integer input
+# This was made possible with this guide to block letters and special characters input
+# https://www.tutorialkart.com/python/tkinter/how-to-allow-only-integer-in-entry-widget-in-tkinter-python/
+
+def validate_input(P):
+    if P.isdigit() or P == "":
+        return True
+    return False
+
+# Register validation function
+vcmd = window.register(validate_input)
 
 # String variable to store temperature cap
 temp_cap = StringVar()
@@ -91,7 +102,7 @@ temp_label = Label(window, text = 'Temp Cap ° C')
 temp_label.pack()
 
 # Create entry for the label input to send its data to the terminal
-temp_entry = Entry(window, textvariable = temp_cap)
+temp_entry = Entry(window, textvariable = temp_cap, validate="key", validatecommand=(vcmd, "%P"))
 temp_entry.pack()
 
 # Create submit button to submit function
