@@ -77,7 +77,7 @@ btn.pack()
 # Function to validate integer input
 # This was made possible with this guide to block letters and special characters input
 # https://www.tutorialkart.com/python/tkinter/how-to-allow-only-integer-in-entry-widget-in-tkinter-python/
-
+# Limit characters counted for to 3 or less
 def validate_input(P):
     if P == "" or (P.isdigit and len(P) <= 3):
         return True
