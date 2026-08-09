@@ -11,6 +11,9 @@ window = Tk()
 window.title('Simple Desktop app')
 window.geometry('400x400')
 
+# Initalize a Stringvar using after() to schedule updates without blocking the GUI
+stringvar = StringVar()
+stringvar.set()
 def message():
     messagebox.showinfo("Test", "Simple messagebox")
 
