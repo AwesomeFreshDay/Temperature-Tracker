@@ -7,6 +7,8 @@ import csv
 from tkinter import *
 from tkinter import messagebox
 
+now = datetime.now()
+current_time = now.time()
 
 window = Tk()
 window.title('Simple Desktop app')
@@ -54,14 +56,16 @@ ram_usage_label = Label(window)
 ram_usage_label.pack()
 update_ram_usage()
 
+# Update disk usage after 1 second
 
+def update_time_clock():
+    time_clock = now.strftime("%I:%M %p")
+    time_clock_label['text'] = time_clock
+    window.after(1000, update_time_clock)
 
-
-
-    
-
-
-
+time_clock_label = Label(window)
+time_clock_label.pack()
+update_time_clock()
 
 def message():
     messagebox.showinfo("Test", "Simple messagebox")
@@ -73,8 +77,7 @@ btn.pack()
 
 window.mainloop()
 """
-now = datetime.now()
-current_time = now.time()
+
 
 print("Temperature Tracker")
 print("-------------------")
@@ -88,7 +91,7 @@ while True:
     
     
     
-    the_time = now.strftime("%I:%M %p")
+    
     monitor_list.extend([cpu, ram, cpu_temp, gpu_temp, the_time])
 
 
