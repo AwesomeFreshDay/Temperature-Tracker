@@ -11,7 +11,7 @@ now = datetime.now()
 current_time = now.time()
 
 window = Tk()
-window.title('Simple Desktop app')
+window.title('Temperature Tracker')
 window.geometry('400x400')
 
 # Update CPU Usage after 1 second
@@ -106,8 +106,8 @@ temp_entry = Entry(window, textvariable = temp_cap, validate="key", validatecomm
 temp_entry.pack()
 
 # Create submit button to submit function
-sub_btn = Button(window, text = 'Submit', command = submit)
-sub_btn.pack()
+set_btn = Button(window, text = 'Set Temperature', command = submit)
+set_btn.pack()
 
 
 
