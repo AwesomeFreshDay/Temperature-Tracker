@@ -83,7 +83,7 @@ temp_cap = StringVar()
 def submit():
     temp = temp_cap.get()
     print(f"The temperature is {temp}")
-    if temp > 120:
+    if int(temp) > 120:
         print("ok")
 
 # Create a label for the user to type in
