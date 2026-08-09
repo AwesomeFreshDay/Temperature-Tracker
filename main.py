@@ -13,7 +13,28 @@ window.geometry('400x400')
 
 # Initalize a Stringvar using after() to schedule updates without blocking the GUI
 stringvar = StringVar()
-stringvar.set()
+stringvar.set("Click 'Start Count' to begin")
+
+# Counter variable
+count = 0
+
+def update_label():
+    global count 
+    count += 1
+    stringvar.set("Count up to: " + str(count))
+
+def start_counting():
+    global count
+    count = 0
+    update_label()
+
+# Create a label widget
+label = Label(window, textvariable=stringvar, font='Arial 17 bold')
+label.pack(pady=20)
+
+button = Button(window, text="Start Count", command=start_counting)
+button.pack()
+
 def message():
     messagebox.showinfo("Test", "Simple messagebox")
 
@@ -24,7 +45,7 @@ btn = Button(window, text="Simple button", command=message)
 btn.pack()
 
 window.mainloop()
-
+"""
 now = datetime.now()
 current_time = now.time()
 
@@ -52,3 +73,4 @@ while True:
     print(*monitor_list, sep=", ")
     
     time.sleep(3)
+    """
