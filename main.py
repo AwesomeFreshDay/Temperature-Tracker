@@ -4,6 +4,23 @@ import os
 from datetime import datetime
 import WinTmp
 import csv
+from tkinter import *
+from tkinter import messagebox
+
+window = Tk()
+window.title('Simple Desktop app')
+window.geometry('400x400')
+
+def message():
+    messagebox.showinfo("Test", "Simple messagebox")
+
+text = Label(window, text='Simple Text')
+text.pack()
+
+btn = Button(window, text="Simple button", command=message)
+btn.pack()
+
+window.mainloop()
 
 now = datetime.now()
 current_time = now.time()
