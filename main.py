@@ -43,6 +43,20 @@ gpu_temp_label = Label(window)
 gpu_temp_label.pack()
 update_gpu_temp()
 
+# Update ram usage after 1 second
+
+def update_ram_usage():
+    ram_usage = psutil.virtual_memory().percent
+    ram_usage_label['text'] = f"Ram Usage: {ram_usage}%"
+    window.after(1000, update_gpu_temp)
+
+ram_usage_label = Label(window)
+ram_usage_label.pack()
+update_ram_usage()
+
+
+
+
 
     
 
@@ -71,7 +85,7 @@ monitor_list = []
 while True: 
     os.system("cls")
     cpu = psutil.cpu_percent(interval=1)
-    ram = psutil.virtual_memory().percent
+    
     
     
     the_time = now.strftime("%I:%M %p")
