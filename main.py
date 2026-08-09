@@ -12,18 +12,20 @@ window = Tk()
 window.title('Simple Desktop app')
 window.geometry('400x400')
 
+# Update CPU Usage after 1 second
 def update_cpu_usage():
     cputest = psutil.cpu_percent(interval=None)
     cpu_label['text'] = f"CPU Usage: {cputest}"
     window.after(1000, update_cpu_usage)
 
+cpu_label = Label(window)
+cpu_label.pack()
+update_cpu_usage()
 
 def message():
     messagebox.showinfo("Test", "Simple messagebox")
 
-cpu_label = Label(window)
-cpu_label.pack()
-update_cpu_usage()
+
 
 btn = Button(window, text="Simple button", command=message)
 btn.pack()
