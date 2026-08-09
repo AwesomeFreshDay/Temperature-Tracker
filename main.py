@@ -75,6 +75,26 @@ def message():
 btn = Button(window, text="Simple button", command=message)
 btn.pack()
 
+# String variable to store temperature cap
+temp_cap = StringVar()
+
+# Function to get temperature input and store on screen
+
+def submit():
+    temp = temp_cap.get()
+    print(f"The temperature is {temp}")
+    temp_cap.set("")
+# Create a label for the user to type in
+temp_label = Label(window, text = 'Temp Cap')
+temp_label.pack()
+# Create entry for the label input
+temp_entry = Entry(window, textvariable = temp_cap)
+temp_entry.pack()
+# Create button to submit function
+sub_btn = Button(window, text = 'Submit', command = submit)
+sub_btn.pack()
+
+
 window.mainloop()
 """
 
