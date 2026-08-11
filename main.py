@@ -56,7 +56,7 @@ ram_usage_label.pack()
 # Update disk usage after 1 second
 
 def update_time_clock():
-    time_clock = now.strftime("%I:%M %p")
+    time_clock = now.strftime("%I:%M:%S %p")
     time_clock_label['text'] = time_clock
 
 time_clock_label = Label(window)
