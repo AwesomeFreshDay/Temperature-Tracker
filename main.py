@@ -27,9 +27,14 @@ cpu_label.pack()
 def update_cpu_temp():
     cpu_temp = WinTmp.CPU_Temp()
     cpu_temp_label['text'] = f"CPU Temp: {cpu_temp}° C"
+    if cpu_temp > 20:
+        messagebox.showwarning("WARNING", "CPU temperature cap exceeded!")
+        
+        
 
 cpu_temp_label = Label(window)
 cpu_temp_label.pack()
+
 
 
 # Update GPU temp after 1 second
@@ -74,7 +79,6 @@ def update_hardware_monitor():
 # Update all hardware monitor after 1 second passed
 update_hardware_monitor()
 
-
 def message():
     messagebox.showinfo("Test", "Simple messagebox")
 
@@ -103,6 +107,8 @@ def submit():
     if int(temp) > 120:
         print("ok")
         messagebox.showwarning("Tempearture", "Temperature cannot be higher than 120, choose a different value")
+
+
         
 
 # Create a label for the user to type in
