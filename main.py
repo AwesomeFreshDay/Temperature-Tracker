@@ -22,49 +22,38 @@ def update_cpu_usage():
     cputest = psutil.cpu_percent(interval=None)
     cpu_label.configure(text=f"CPU Usage: {cputest}%")
 
-
-
 # Update CPU Temp after 1 second
-def update_cpu_temp():
-    cpu_temp = WinTmp.CPU_Temp()
-    cpu_temp_label['text'] = f"CPU Temp: {cpu_temp}° C"
-    return cpu_temp
-
-cpu_temp_label = Label(window)
+cpu_temp_label = customtkinter.CTkLabel(master=window, text="")
 cpu_temp_label.pack()
 
-
+def update_cpu_temp():
+    cpu_temp = WinTmp.CPU_Temp()
+    cpu_temp_label.configure(text=f"CPU Temp: {cpu_temp}° C")
 
 # Update GPU temp after 1 second
+gpu_temp_label = customtkinter.CTkLabel(master=window, text="")
+gpu_temp_label.pack()
 
 def update_gpu_temp():
     gpu_temp = WinTmp.GPU_Temp()
-    gpu_temp_label['text'] = f"GPU Temp: {gpu_temp}° C"
-
-gpu_temp_label = Label(window)
-gpu_temp_label.pack()
-
+    gpu_temp_label.configure(text=f"GPU Temp: {gpu_temp}° C")
 
 # Update ram usage after 1 second
+ram_usage_label = customtkinter.CTkLabel(master=window, text="")
+ram_usage_label.pack()
 
 def update_ram_usage():
     ram_usage = psutil.virtual_memory().percent
-    ram_usage_label['text'] = f"Ram Usage: {ram_usage}%"
-
-ram_usage_label = Label(window)
-ram_usage_label.pack()
-
+    ram_usage_label.configure(text=f"Ram Usage: {ram_usage}%")
 
 # Update disk usage after 1 second
+time_clock_label = customtkinter.CTkLabel(master=window, text="")
+time_clock_label.pack()
 
 def update_time_clock():
     now = datetime.now()
     time_clock = now.strftime("%I:%M:%S %p")
-    time_clock_label['text'] = time_clock
-
-time_clock_label = Label(window)
-time_clock_label.pack()
-
+    time_clock_label.configure(text=time_clock)
 
 def update_hardware_monitor():
     window.after(1000, update_hardware_monitor)
