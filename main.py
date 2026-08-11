@@ -8,6 +8,7 @@ from tkinter import *
 from tkinter import messagebox
 import customtkinter
 
+customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
 window = customtkinter.CTk()
 window.title('Temperature Tracker')
