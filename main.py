@@ -13,6 +13,7 @@ current_time = now.time()
 window = Tk()
 window.title('Temperature Tracker')
 window.geometry('400x400')
+window.resizable(False, False)
 
 # Update CPU Usage after 1 second
 
@@ -102,7 +103,7 @@ def submit():
     print(f"The temperature is {temp}")
     if int(temp) > 120:
         print("ok")
-        messagebox.showinfo("Tempearture", "Temperature cannot be higher than 120, choose a different value")
+        messagebox.showwarning("Tempearture", "Temperature cannot be higher than 120, choose a different value")
         
 
 # Create a label for the user to type in
