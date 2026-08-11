@@ -6,21 +6,22 @@ import WinTmp
 import csv
 from tkinter import *
 from tkinter import messagebox
+import customtkinter
 
-
-window = Tk()
+customtkinter.set_default_color_theme("blue")
+window = customtkinter.CTk()
 window.title('Temperature Tracker')
 window.geometry('400x400')
 window.resizable(False, False)
 
 # Update CPU Usage after 1 second
+cpu_label = customtkinter.CTkLabel(master=window, text="Editable text")
+cpu_label.pack()
 
 def update_cpu_usage():
     cputest = psutil.cpu_percent(interval=None)
-    cpu_label['text'] = f"CPU Usage: {cputest}%"
+    cpu_label.configure(text=f"CPU Usage: {cputest}%")
 
-cpu_label = Label(window)
-cpu_label.pack()
 
 
 # Update CPU Temp after 1 second
