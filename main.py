@@ -27,8 +27,10 @@ cpu_label.pack()
 def update_cpu_temp():
     cpu_temp = WinTmp.CPU_Temp()
     cpu_temp_label['text'] = f"CPU Temp: {cpu_temp}° C"
-    if cpu_temp > 20:
-        messagebox.showwarning("WARNING", "CPU temperature cap exceeded!")
+    return cpu_temp
+
+
+# messagebox.showwarning("WARNING", "CPU temperature cap exceeded!")
         
         
 
@@ -102,11 +104,19 @@ temp_cap = StringVar()
 # Function to get temperature input and store on screen
 
 def submit():
-    temp = temp_cap.get()
+    temp = int(temp_cap.get())
     print(f"The temperature is {temp}")
     if int(temp) > 120:
         print("ok")
         messagebox.showwarning("Tempearture", "Temperature cannot be higher than 120, choose a different value")
+        return temp
+def update_temp_cap(cpu_temp, temp):
+    cpu_temp = WinTmp.CPU_Temp()
+    if cpu_temp > temp:
+        print("Hello")
+    return cpu_temp, temp
+
+update_temp_cap(cpu_temp, temp)
 
 
         
