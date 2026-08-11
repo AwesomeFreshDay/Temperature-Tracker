@@ -7,8 +7,6 @@ import csv
 from tkinter import *
 from tkinter import messagebox
 
-now = datetime.now()
-current_time = now.time()
 
 window = Tk()
 window.title('Temperature Tracker')
@@ -57,6 +55,7 @@ ram_usage_label.pack()
 # Update disk usage after 1 second
 
 def update_time_clock():
+    now = datetime.now()
     time_clock = now.strftime("%I:%M:%S %p")
     time_clock_label['text'] = time_clock
 
