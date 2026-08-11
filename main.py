@@ -112,15 +112,15 @@ def submit():
         
 
 # Create a label for the user to type in
-temp_label = Label(window, text = 'Temp Cap ° C')
+temp_label = customtkinter.CTkLabel(window, text = 'Temp Cap ° C')
 temp_label.pack()
 
 # Create entry for the label input to send its data to the terminal
-temp_entry = Entry(window, textvariable = temp_cap, validate="key", validatecommand=(vcmd, "%P"))
+temp_entry = customtkinter.CTkEntry(window, textvariable = temp_cap, validate="key", validatecommand=(vcmd, "%P"))
 temp_entry.pack()
 
 # Create submit button to submit function
-set_btn = Button(window, text = 'Set Temperature', command = submit)
+set_btn = customtkinter.CTkButton(window, text = 'Set Temperature', command = submit)
 set_btn.pack()
 
 
