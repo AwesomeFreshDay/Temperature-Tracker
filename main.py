@@ -79,27 +79,21 @@ def sliding(value):
 # Define starting point
 
 slider = customtkinter.CTkSlider(master=window, from_=0, to=120, command=sliding)
-temp_slider_label = customtkinter.CTkLabel(window, text=slider.get())
 slider.set(0)
+temp_slider_label = customtkinter.CTkLabel(window, text=slider.get())
 slider.pack()
 temp_slider_label.pack()
 
-# Function to validate integer input
-# This was made possible with this guide to block letters and special characters input
-# https://www.tutorialkart.com/python/tkinter/how-to-allow-only-integer-in-entry-widget-in-tkinter-python/
-# Limit characters counted for to 3 or less
-def validate_input(P):
-    if P == "" or (P.isdigit and len(P) <= 3):
-        return True
-    return False
+# Function to get temperature input and store on screen
+def show_temp_data():
+   the_temp = int(slider.get())
+   print(f"The value is {the_temp}")
 
-# Register validation function
-vcmd = window.register(validate_input)
-
+show_temp_data()
 # String variable to store temperature cap
 temp_cap = StringVar()
 
-# Function to get temperature input and store on screen
+
 def update_temp_cap():
     cpu_temp = WinTmp.CPU_Temp()
     temp = int(temp_cap.get())
@@ -128,7 +122,7 @@ temp_label = customtkinter.CTkLabel(window, text = 'Temp Cap ° C')
 temp_label.pack()
 
 # Create entry for the label input to send its data to the terminal
-temp_entry = customtkinter.CTkEntry(window, textvariable = temp_cap, validate="key", validatecommand=(vcmd, "%P"))
+temp_entry = customtkinter.CTkEntry(window, textvariable = temp_cap, validate="key")
 temp_entry.pack()
 
 # Create submit button to submit function
