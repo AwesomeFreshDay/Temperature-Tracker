@@ -22,6 +22,7 @@ cpu_label.pack()
 def update_cpu_usage():
     cputest = psutil.cpu_percent(interval=None)
     cpu_label.configure(text=f"CPU Usage: {cputest}%")
+    window.after(1000, update_cpu_usage)
 
 # Update CPU Temp after 1 second
 cpu_temp_label = customtkinter.CTkLabel(master=window, text="")
@@ -30,6 +31,7 @@ cpu_temp_label.pack()
 def update_cpu_temp():
     cpu_temp = WinTmp.CPU_Temp()
     cpu_temp_label.configure(text=f"CPU Temp: {cpu_temp}° C")
+    window.after(1500, update_cpu_temp)
 
 # Update GPU temp after 1 second
 gpu_temp_label = customtkinter.CTkLabel(master=window, text="")
@@ -38,6 +40,7 @@ gpu_temp_label.pack()
 def update_gpu_temp():
     gpu_temp = WinTmp.GPU_Temp()
     gpu_temp_label.configure(text=f"GPU Temp: {gpu_temp}° C")
+    window.after(1500, update_gpu_temp)
 
 # Update ram usage after 1 second
 ram_usage_label = customtkinter.CTkLabel(master=window, text="")
@@ -46,6 +49,7 @@ ram_usage_label.pack()
 def update_ram_usage():
     ram_usage = psutil.virtual_memory().percent
     ram_usage_label.configure(text=f"Ram Usage: {ram_usage}%")
+    window.after(1000, update_ram_usage)
 
 # Update disk usage after 1 second
 time_clock_label = customtkinter.CTkLabel(master=window, text="")
@@ -55,17 +59,13 @@ def update_time_clock():
     now = datetime.now()
     time_clock = now.strftime("%I:%M:%S %p")
     time_clock_label.configure(text=time_clock)
+    window.after(1000, update_time_clock)
 
-def update_hardware_monitor():
-    window.after(1000, update_hardware_monitor)
-    update_cpu_usage()
-    update_cpu_temp()
-    update_gpu_temp()
-    update_ram_usage()
-    update_time_clock()
-
-# Update all hardware monitor after 1 second passed
-update_hardware_monitor()
+update_cpu_usage()
+update_cpu_temp()
+update_gpu_temp()
+update_ram_usage()
+update_time_clock()
 
 def message():
     messagebox.showinfo("Test", "Simple messagebox")
@@ -79,7 +79,7 @@ def sliding(value):
 # Define starting point
 
 slider = customtkinter.CTkSlider(master=window, from_=0, to=120, command=sliding)
-temp_slider_label = customtkinter.CTkLabel(window, text=slider.get(), font=("Helevetica", 18))
+temp_slider_label = customtkinter.CTkLabel(window, text=slider.get())
 slider.set(0)
 slider.pack()
 temp_slider_label.pack()
