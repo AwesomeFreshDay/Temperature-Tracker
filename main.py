@@ -78,7 +78,7 @@ def sliding(value):
 
 # Define starting point
 
-slider = customtkinter.CTkSlider(master=window, from_=0, to=120, command=sliding)
+slider = customtkinter.CTkSlider(master=window, from_=40, to=120, command=sliding)
 slider.set(0)
 temp_slider_label = customtkinter.CTkLabel(window, text=slider.get())
 slider.pack()
@@ -95,37 +95,6 @@ def show_temp_data():
            window.after(1000, show_temp_data)
 
 show_temp_data()
-
-def submit():
-    #temp = int(temp_cap.get())
-    #print(f"The temperature is {temp}")
-    #if int(temp) > 120:
-       #print("ok")
-        #messagebox.showwarning("Tempearture", "Temperature cannot be higher than 120, choose a different value")
-
-
-
-
-
-
-        
-
-# Create a label for the user to type in
-temp_label = customtkinter.CTkLabel(window, text = 'Temp Cap ° C')
-temp_label.pack()
-
-# Create entry for the label input to send its data to the terminal
-temp_entry = customtkinter.CTkEntry(window, textvariable = temp_cap, validate="key")
-temp_entry.pack()
-
-# Create submit button to submit function
-set_btn = customtkinter.CTkButton(window, text = 'Set Temperature', command = submit)
-set_btn.pack()
-
-
-
-
-
 
 window.mainloop()
 """
