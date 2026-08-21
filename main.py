@@ -72,12 +72,17 @@ def message():
 
 btn = Button(window, text="Simple button", command=message)
 btn.pack()
+# Function to input value the user puts
+def sliding(value):
+    temp_slider_label.configure(text=int(value))
 
-slider = customtkinter.CTkSlider(master=window, from_=0, to=120, number_of_steps=5)
+# Define starting point
+
+slider = customtkinter.CTkSlider(master=window, from_=0, to=120, command=sliding)
+temp_slider_label = customtkinter.CTkLabel(window, text=slider.get(), font=("Helevetica", 18))
+slider.set(0)
 slider.pack()
-
-
-
+temp_slider_label.pack()
 
 # Function to validate integer input
 # This was made possible with this guide to block letters and special characters input
