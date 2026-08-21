@@ -86,31 +86,24 @@ temp_slider_label.pack()
 
 # Function to get temperature input and store on screen
 def show_temp_data():
-   the_temp = int(slider.get())
-   print(f"The value is {the_temp}")
+   cpu_temp = WinTmp.CPU_Temp()
+   temp = int(slider.get())
+   if cpu_temp > temp:
+           print("Hello")
+           print(f"CPU: {cpu_temp}°C | Cap: {temp}°C")
+           messagebox.showwarning("WARNING", "CPU temperature cap exceeded!")
+           window.after(1000, show_temp_data)
 
 show_temp_data()
-# String variable to store temperature cap
-temp_cap = StringVar()
-
-
-def update_temp_cap():
-    cpu_temp = WinTmp.CPU_Temp()
-    temp = int(temp_cap.get())
-    if cpu_temp > temp:
-        print("Hello")
-        print(f"CPU: {cpu_temp}°C | Cap: {temp}°C")
-        messagebox.showwarning("WARNING", "CPU temperature cap exceeded!")
-        window.after(1000, update_temp_cap)
 
 def submit():
-    temp = int(temp_cap.get())
-    print(f"The temperature is {temp}")
-    if int(temp) > 120:
-        print("ok")
-        messagebox.showwarning("Tempearture", "Temperature cannot be higher than 120, choose a different value")
+    #temp = int(temp_cap.get())
+    #print(f"The temperature is {temp}")
+    #if int(temp) > 120:
+       #print("ok")
+        #messagebox.showwarning("Tempearture", "Temperature cannot be higher than 120, choose a different value")
 
-    update_temp_cap()
+
 
 
 
