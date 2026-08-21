@@ -72,6 +72,13 @@ def message():
 
 btn = Button(window, text="Simple button", command=message)
 btn.pack()
+
+slider = customtkinter.CTkSlider(master=window, from_=0, to=120, number_of_steps=5)
+slider.pack()
+
+
+
+
 # Function to validate integer input
 # This was made possible with this guide to block letters and special characters input
 # https://www.tutorialkart.com/python/tkinter/how-to-allow-only-integer-in-entry-widget-in-tkinter-python/
