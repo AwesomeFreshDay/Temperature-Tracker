@@ -72,10 +72,12 @@ def message():
 
 btn = Button(window, text="Simple button", command=message)
 btn.pack()
-# Function to input value the user puts
+# Function to input value the user puts & Function to reset while_running back to false
 def sliding(value):
     temp_slider_label.configure(text=f"{int(value)} ° C")
-
+    global while_running
+    while_running = False
+    
 # Define starting point
 
 slider = customtkinter.CTkSlider(master=window, from_=30, to=120, progress_color="#2f5694", command=sliding)
