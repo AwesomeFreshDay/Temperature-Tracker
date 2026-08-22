@@ -78,21 +78,27 @@ def sliding(value):
 
 # Define starting point
 
-slider = customtkinter.CTkSlider(master=window, from_=40, to=120, progress_color="#2f5694", command=sliding)
-slider.set(100)
+slider = customtkinter.CTkSlider(master=window, from_=30, to=120, progress_color="#2f5694", command=sliding)
+slider.set(80)
 temp_slider_label = customtkinter.CTkLabel(window, text=f"{slider.get()} ° C")
 slider.pack()
 temp_slider_label.pack()
 
+# Boolean to send the messagebox only 1 time when they close the box until they change the value
+while_running = False
+
+
 # Function to get temperature input and store on screen
 def show_temp_data():
+   global while_running
    cpu_temp = WinTmp.CPU_Temp()
    temp = int(slider.get())
-   if cpu_temp > temp:
+   if cpu_temp > temp and while_running == False:
+           while_running = True
            print("Hello")
            print(f"CPU: {cpu_temp}°C | Cap: {temp}°C")
            messagebox.showwarning("WARNING", "CPU temperature cap exceeded!")
-           window.after(1000, show_temp_data)
+   window.after(1000, show_temp_data)
 
 show_temp_data()
 
