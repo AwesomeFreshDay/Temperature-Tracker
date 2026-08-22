@@ -74,13 +74,13 @@ btn = Button(window, text="Simple button", command=message)
 btn.pack()
 # Function to input value the user puts
 def sliding(value):
-    temp_slider_label.configure(text=int(value))
+    temp_slider_label.configure(text=f"{int(value)} ° C")
 
 # Define starting point
 
-slider = customtkinter.CTkSlider(master=window, from_=40, to=120, command=sliding)
+slider = customtkinter.CTkSlider(master=window, from_=40, to=120, progress_color="#2f5694", command=sliding)
 slider.set(100)
-temp_slider_label = customtkinter.CTkLabel(window, text=slider.get())
+temp_slider_label = customtkinter.CTkLabel(window, text=f"{slider.get()} ° C")
 slider.pack()
 temp_slider_label.pack()
 
