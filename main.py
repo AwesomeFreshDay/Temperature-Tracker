@@ -104,9 +104,11 @@ def switch_click():
         customtkinter.set_appearance_mode("light")
 # 2 values given onvalue on and offvalue off and switch activates function
 switch_widget = customtkinter.CTkSwitch(window, text="Dark Mode", onvalue="on", offvalue="off", command=switch_click)
+# Switch position to bottom
+switch_widget.place(x=10, y=365)
 # Start with the switch already toggled on
 switch_widget.select()
-switch_widget.pack()
+
 
 
 window.mainloop()
