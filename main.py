@@ -79,7 +79,7 @@ def sliding(value):
 # Define starting point
 
 slider = customtkinter.CTkSlider(master=window, from_=40, to=120, command=sliding)
-slider.set(0)
+slider.set(100)
 temp_slider_label = customtkinter.CTkLabel(window, text=slider.get())
 slider.pack()
 temp_slider_label.pack()
@@ -95,6 +95,19 @@ def show_temp_data():
            window.after(1000, show_temp_data)
 
 show_temp_data()
+
+# If switch is on set dark if its off put light
+def switch_click():
+    if switch_widget.get() == "on":
+        customtkinter.set_appearance_mode("dark")
+    if switch_widget.get() == "off":
+        customtkinter.set_appearance_mode("light")
+# 2 values given onvalue on and offvalue off and switch activates function
+switch_widget = customtkinter.CTkSwitch(window, text="Dark Mode", onvalue="on", offvalue="off", command=switch_click)
+# Start with the switch already toggled on
+switch_widget.select()
+switch_widget.pack()
+
 
 window.mainloop()
 """
