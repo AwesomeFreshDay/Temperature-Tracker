@@ -77,7 +77,7 @@ def sliding(value):
     temp_slider_label.configure(text=f"{int(value)} ° C")
     global while_running
     while_running = False
-    
+
 # Define starting point
 
 slider = customtkinter.CTkSlider(master=window, from_=30, to=120, progress_color="#2f5694", command=sliding)
@@ -117,6 +117,7 @@ switch_widget.place(x=10, y=365)
 # Start with the switch already toggled on
 switch_widget.select()
 
+# MAKE SURE TO Create a seperate tab for temperature tracker next session 
 
 
 window.mainloop()
