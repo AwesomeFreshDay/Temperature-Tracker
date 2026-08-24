@@ -7,6 +7,7 @@ import csv
 from tkinter import *
 from tkinter import messagebox
 import customtkinter
+import threading
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
@@ -116,6 +117,27 @@ switch_widget = customtkinter.CTkSwitch(window, text="Dark Mode", onvalue="on", 
 switch_widget.place(x=10, y=365)
 # Start with the switch already toggled on
 switch_widget.select()
+
+# Create threading for temps to run in background of program to optimize/stop the lag
+def get_temps():
+    cpu_temp = WinTmp.CPU_Temp()
+    gpu_temp = WinTmp.GPU_Temp()
+    # Immediately Give temps back to gui
+    window.after(0, update_temps, cpu_temp, gpu_temp) 
+
+# We passed our temp values to the function and print them out
+def update_temps(cpu_temp, gpu_temp):
+    print(f"CPU Temp: {cpu_temp}")
+    print(f"GPU Temp: {gpu_temp}")
+
+# Now the code runs int he background
+def show_temp_data():
+    # Run temps in background
+    threading.Thread(target=get_temps, daemon=True).start()
+    # Check again after 1 second
+    window.after(1000, show_temp_data)
+
+show_temp_data()
 
 # MAKE SURE TO Create a seperate tab for temperature tracker next session 
 
