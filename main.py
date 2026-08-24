@@ -16,32 +16,39 @@ window.title('Temperature Tracker')
 window.geometry('400x400')
 window.resizable(False, False)
 
-# Update CPU Usage after 1 second
-cpu_label = customtkinter.CTkLabel(master=window, text="Editable text")
-cpu_label.pack()
-
-def update_cpu_usage():
-    cputest = psutil.cpu_percent(interval=None)
-    cpu_label.configure(text=f"CPU Usage: {cputest}%")
-    window.after(1000, update_cpu_usage)
-
 # Create threading for temps to run in background of program to optimize/stop the lag
 def get_temps():
- while True: 
+ while True:
+    cputest = psutil.cpu_percent(interval=None) 
     cpu_temp = WinTmp.CPU_Temp()
     gpu_temp = WinTmp.GPU_Temp()
+    ram_usage = psutil.virtual_memory().percent
+    now = datetime.now()
+    time_clock = now.strftime("%I:%M:%S %p")
     # Immediately Give temps back to gui
-    window.after(0, update_temps, cpu_temp, gpu_temp) 
+    window.after(0, update_temps, cputest, cpu_temp, gpu_temp, ram_usage, time_clock) 
     time.sleep(1)
 
 # We passed our temp values to the function and print them out
-def update_temps(cpu_temp, gpu_temp):
+def update_temps(cputest, cpu_temp, gpu_temp, ram_usage, time_clock):
+    # For the cpu usage for the program
+    cpu_label.configure(text=f"CPU Usage: {cputest}%")
+
     # For the cpu temp for the program
     cpu_temp_label.configure(text=f"CPU Temp: {cpu_temp}° C")
     
     # Now for the gpu temp for the program
     gpu_temp_label.configure(text=f"GPU Temp: {gpu_temp}° C")
+
+    # now for the ram
+    ram_usage_label.configure(text=f"Ram Usage: {ram_usage}%")
+
+    # For the clock
+    time_clock_label.configure(text=time_clock)
     
+# Update CPU Usage after 1 second
+cpu_label = customtkinter.CTkLabel(master=window, text="Editable text")
+cpu_label.pack()
 
 cpu_temp_label = customtkinter.CTkLabel(master=window, text="")
 cpu_temp_label.pack()
@@ -49,35 +56,17 @@ cpu_temp_label.pack()
 gpu_temp_label = customtkinter.CTkLabel(master=window, text="")
 gpu_temp_label.pack()
 
-# Start only one background thread
-    # Run temps in background
-threading.Thread(target=get_temps, daemon=True).start()
-
-
-
-
 # Update ram usage after 1 second
 ram_usage_label = customtkinter.CTkLabel(master=window, text="")
 ram_usage_label.pack()
 
-def update_ram_usage():
-    ram_usage = psutil.virtual_memory().percent
-    ram_usage_label.configure(text=f"Ram Usage: {ram_usage}%")
-    window.after(1000, update_ram_usage)
-
-# Update disk usage after 1 second
+# Update the clock every second
 time_clock_label = customtkinter.CTkLabel(master=window, text="")
 time_clock_label.pack()
 
-def update_time_clock():
-    now = datetime.now()
-    time_clock = now.strftime("%I:%M:%S %p")
-    time_clock_label.configure(text=time_clock)
-    window.after(1000, update_time_clock)
-
-update_cpu_usage()
-update_ram_usage()
-update_time_clock()
+# Start only one background thread
+    # Run temps in background
+threading.Thread(target=get_temps, daemon=True).start()
 
 def message():
     messagebox.showinfo("Test", "Simple messagebox")
