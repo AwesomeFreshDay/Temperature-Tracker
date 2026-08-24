@@ -25,23 +25,36 @@ def update_cpu_usage():
     cpu_label.configure(text=f"CPU Usage: {cputest}%")
     window.after(1000, update_cpu_usage)
 
-# Update CPU Temp after 1 second
+# Create threading for temps to run in background of program to optimize/stop the lag
+def get_temps():
+ while True: 
+    cpu_temp = WinTmp.CPU_Temp()
+    gpu_temp = WinTmp.GPU_Temp()
+    # Immediately Give temps back to gui
+    window.after(0, update_temps, cpu_temp, gpu_temp) 
+    time.sleep(1)
+
+# We passed our temp values to the function and print them out
+def update_temps(cpu_temp, gpu_temp):
+    # For the cpu temp for the program
+    cpu_temp_label.configure(text=f"CPU Temp: {cpu_temp}° C")
+    
+    # Now for the gpu temp for the program
+    gpu_temp_label.configure(text=f"GPU Temp: {gpu_temp}° C")
+    
+
 cpu_temp_label = customtkinter.CTkLabel(master=window, text="")
 cpu_temp_label.pack()
 
-def update_cpu_temp():
-    cpu_temp = WinTmp.CPU_Temp()
-    cpu_temp_label.configure(text=f"CPU Temp: {cpu_temp}° C")
-    window.after(1500, update_cpu_temp)
-
-# Update GPU temp after 1 second
 gpu_temp_label = customtkinter.CTkLabel(master=window, text="")
 gpu_temp_label.pack()
 
-def update_gpu_temp():
-    gpu_temp = WinTmp.GPU_Temp()
-    gpu_temp_label.configure(text=f"GPU Temp: {gpu_temp}° C")
-    window.after(1500, update_gpu_temp)
+# Start only one background thread
+    # Run temps in background
+threading.Thread(target=get_temps, daemon=True).start()
+
+
+
 
 # Update ram usage after 1 second
 ram_usage_label = customtkinter.CTkLabel(master=window, text="")
@@ -63,8 +76,6 @@ def update_time_clock():
     window.after(1000, update_time_clock)
 
 update_cpu_usage()
-update_cpu_temp()
-update_gpu_temp()
 update_ram_usage()
 update_time_clock()
 
@@ -118,26 +129,7 @@ switch_widget.place(x=10, y=365)
 # Start with the switch already toggled on
 switch_widget.select()
 
-# Create threading for temps to run in background of program to optimize/stop the lag
-def get_temps():
-    cpu_temp = WinTmp.CPU_Temp()
-    gpu_temp = WinTmp.GPU_Temp()
-    # Immediately Give temps back to gui
-    window.after(0, update_temps, cpu_temp, gpu_temp) 
 
-# We passed our temp values to the function and print them out
-def update_temps(cpu_temp, gpu_temp):
-    print(f"CPU Temp: {cpu_temp}")
-    print(f"GPU Temp: {gpu_temp}")
-
-# Now the code runs int he background
-def show_temp_data():
-    # Run temps in background
-    threading.Thread(target=get_temps, daemon=True).start()
-    # Check again after 1 second
-    window.after(1000, show_temp_data)
-
-show_temp_data()
 
 # MAKE SURE TO Create a seperate tab for temperature tracker next session 
 
