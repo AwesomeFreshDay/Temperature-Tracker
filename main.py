@@ -82,7 +82,7 @@ def sliding(value):
     global while_cpu_running
     while_cpu_running = False
 
-# Define starting point
+# Define starting point for obtaining cpu temp
 
 slider = customtkinter.CTkSlider(master=window, from_=30, to=120, progress_color="#2f5694", command=sliding)
 slider.set(80)
@@ -90,19 +90,23 @@ temp_slider_label = customtkinter.CTkLabel(window, text=f"{slider.get()} ° C")
 slider.pack()
 temp_slider_label.pack()
 
-# Store value for the gpu this time
+# Label gpu
+gpu_temp_slider_label = customtkinter.CTkLabel(window, text="GPU Temperature Cap:")
+gpu_temp_slider_label.pack()
 
+# Store value for the gpu this time
 def sliding_gpu(value):
-    gpu_slider.configure(text=f"{int(value)} ° C")
+    gpu_slider_label.configure(text=f"{int(value)} ° C")
     global while_gpu_running
     while_gpu_running = False
 
 # slider for the gpu this time
 
-gpu_slider = customtkinter.CTkSlider(master=window, from_=30, to=120, progress_color="red", command=sliding_gpu)
+gpu_slider = customtkinter.CTkSlider(master=window, from_=30, to=120, progress_color="#f05d5d", command=sliding_gpu)
 gpu_slider.set(80)
 gpu_slider_label = customtkinter.CTkLabel(window, text=f"{gpu_slider.get()} ° C")
 gpu_slider.pack()
+gpu_slider_label.pack()
 
 # Boolean to send the messagebox only 1 time when they close the box until they change the value
 while_cpu_running = False
