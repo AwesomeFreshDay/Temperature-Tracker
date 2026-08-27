@@ -73,11 +73,14 @@ def message():
 
 btn = Button(window, text="Simple button", command=message)
 btn.pack()
+
+cpu_temp_slider_label = customtkinter.CTkLabel(window, text="CPU Temperature Cap:")
+cpu_temp_slider_label.pack()
 # Function to input value the user puts & Function to reset while_running back to false
 def sliding(value):
     temp_slider_label.configure(text=f"{int(value)} ° C")
-    global while_running
-    while_running = False
+    global while_cpu_running
+    while_cpu_running = False
 
 # Define starting point
 
@@ -87,23 +90,51 @@ temp_slider_label = customtkinter.CTkLabel(window, text=f"{slider.get()} ° C")
 slider.pack()
 temp_slider_label.pack()
 
+# Store value for the gpu this time
+
+def sliding_gpu(value):
+    gpu_slider.configure(text=f"{int(value)} ° C")
+    global while_gpu_running
+    while_gpu_running = False
+
+# slider for the gpu this time
+
+gpu_slider = customtkinter.CTkSlider(master=window, from_=30, to=120, progress_color="red", command=sliding_gpu)
+gpu_slider.set(80)
+gpu_slider_label = customtkinter.CTkLabel(window, text=f"{gpu_slider.get()} ° C")
+gpu_slider.pack()
+
 # Boolean to send the messagebox only 1 time when they close the box until they change the value
-while_running = False
+while_cpu_running = False
+while_gpu_running = False
 
-
-# Function to get temperature input and store on screen
+# Function to get temperature input and store on screen for the cpu
 def show_temp_data():
-   global while_running
+   global while_cpu_running
    cpu_temp = WinTmp.CPU_Temp()
    temp = int(slider.get())
-   if cpu_temp > temp and while_running == False:
-           while_running = True
+   if cpu_temp > temp and while_cpu_running == False:
+           while_cpu_running = True
            print("Hello")
            print(f"CPU: {cpu_temp}°C | Cap: {temp}°C")
            messagebox.showwarning("WARNING", "CPU temperature cap exceeded!")
    window.after(1000, show_temp_data)
 
 show_temp_data()
+
+# FUnction for gpu temp output
+
+def show_gpu_data():
+    global while_gpu_running
+    gpu_temp = WinTmp.GPU_Temp()
+    temp = int(gpu_slider.get())
+    if gpu_temp > temp and while_gpu_running == False:
+     while_gpu_running = True
+     print(f"CPU: {gpu_temp}°C | Cap: {temp}°C")
+     messagebox.showwarning("WARNING", "GPU temperature cap exceeded!")
+window.after(1000, show_temp_data)
+     
+show_gpu_data()
 
 # If switch is on set dark if its off put light
 def switch_click():
