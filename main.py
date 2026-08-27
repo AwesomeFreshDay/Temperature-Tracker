@@ -162,6 +162,20 @@ switch_widget.place(x=10, y=365)
 # Start with the switch already toggled on
 switch_widget.select()
 
+# Tab 2
+# Creating temperature tracker
+def time_picker(choice):
+    print(choice)
+
+
+time_selection = ["5 minutes", "10 minutes", "15 minutes", "20 minutes"]
+dropdown_box = customtkinter.CTkComboBox(tab_2, values=time_selection, command=time_picker)
+dropdown_box.pack()
+
+
+
+
+
 
 
 # MAKE SURE TO Create a seperate tab for temperature tracker next session 
