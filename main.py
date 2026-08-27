@@ -16,6 +16,15 @@ window.title('Temperature Tracker')
 window.geometry('400x400')
 window.resizable(False, False)
 
+# Create tabview
+my_tab = customtkinter.CTkTabview(window,corner_radius=20, width=600,height=250)
+my_tab.pack()
+
+# Create tabs
+
+tab_1 = my_tab.add("Main")
+tab_2 = my_tab.add("Temperature Tracker")
+
 # Create threading for temps to run in background of program to optimize/stop the lag
 def get_temps():
  while True:
@@ -47,21 +56,21 @@ def update_temps(cputest, cpu_temp, gpu_temp, ram_usage, time_clock):
     time_clock_label.configure(text=time_clock)
     
 # Update CPU Usage after 1 second
-cpu_label = customtkinter.CTkLabel(master=window, text="Editable text")
+cpu_label = customtkinter.CTkLabel(master=tab_1, text="Editable text")
 cpu_label.pack()
 
-cpu_temp_label = customtkinter.CTkLabel(master=window, text="")
+cpu_temp_label = customtkinter.CTkLabel(master=tab_1, text="")
 cpu_temp_label.pack()
 
-gpu_temp_label = customtkinter.CTkLabel(master=window, text="")
+gpu_temp_label = customtkinter.CTkLabel(master=tab_1, text="")
 gpu_temp_label.pack()
 
 # Update ram usage after 1 second
-ram_usage_label = customtkinter.CTkLabel(master=window, text="")
+ram_usage_label = customtkinter.CTkLabel(master=tab_1, text="")
 ram_usage_label.pack()
 
 # Update the clock every second
-time_clock_label = customtkinter.CTkLabel(master=window, text="")
+time_clock_label = customtkinter.CTkLabel(master=tab_1, text="")
 time_clock_label.pack()
 
 # Start only one background thread
@@ -71,10 +80,10 @@ threading.Thread(target=get_temps, daemon=True).start()
 def message():
     messagebox.showinfo("Test", "Simple messagebox")
 
-btn = Button(window, text="Simple button", command=message)
+btn = Button(tab_1, text="Simple button", command=message)
 btn.pack()
 
-cpu_temp_slider_label = customtkinter.CTkLabel(window, text="CPU Temperature Cap:")
+cpu_temp_slider_label = customtkinter.CTkLabel(tab_1, text="CPU Temperature Cap:")
 cpu_temp_slider_label.pack()
 # Function to input value the user puts & Function to reset while_running back to false
 def sliding(value):
@@ -84,14 +93,14 @@ def sliding(value):
 
 # Define starting point for obtaining cpu temp
 
-slider = customtkinter.CTkSlider(master=window, from_=30, to=120, progress_color="#2f5694", command=sliding)
+slider = customtkinter.CTkSlider(master=tab_1, from_=30, to=120, progress_color="#2f5694", command=sliding)
 slider.set(80)
-temp_slider_label = customtkinter.CTkLabel(window, text=f"{slider.get()} ° C")
+temp_slider_label = customtkinter.CTkLabel(tab_1, text=f"{slider.get()} ° C")
 slider.pack()
 temp_slider_label.pack()
 
 # Label gpu
-gpu_temp_slider_label = customtkinter.CTkLabel(window, text="GPU Temperature Cap:")
+gpu_temp_slider_label = customtkinter.CTkLabel(tab_1, text="GPU Temperature Cap:")
 gpu_temp_slider_label.pack()
 
 # Store value for the gpu this time
@@ -102,9 +111,9 @@ def sliding_gpu(value):
 
 # slider for the gpu this time
 
-gpu_slider = customtkinter.CTkSlider(master=window, from_=30, to=120, progress_color="#f05d5d", command=sliding_gpu)
+gpu_slider = customtkinter.CTkSlider(master=tab_1, from_=30, to=120, progress_color="#f05d5d", command=sliding_gpu)
 gpu_slider.set(80)
-gpu_slider_label = customtkinter.CTkLabel(window, text=f"{gpu_slider.get()} ° C")
+gpu_slider_label = customtkinter.CTkLabel(tab_1, text=f"{gpu_slider.get()} ° C")
 gpu_slider.pack()
 gpu_slider_label.pack()
 
