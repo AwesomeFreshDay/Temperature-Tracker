@@ -121,7 +121,7 @@ def show_temp_data():
            while_cpu_running = True
            print("Hello")
            print(f"CPU: {cpu_temp}°C | Cap: {temp}°C")
-           messagebox.showwarning("WARNING", "CPU temperature cap exceeded!")
+           messagebox.showwarning("WARNING", f"CPU temperature cap exceeded! CPU: {cpu_temp}°C | Cap: {temp}°C")
    window.after(1000, show_temp_data)
 
 show_temp_data()
@@ -132,11 +132,10 @@ def show_gpu_data():
     global while_gpu_running
     gpu_temp = WinTmp.GPU_Temp()
     temp = int(gpu_slider.get())
-    print(gpu_slider.get())
     if gpu_temp > temp and while_gpu_running == False:
         while_gpu_running = True
         print(f"CPU: {gpu_temp}°C | Cap: {temp}°C")
-        messagebox.showwarning("WARNING", "GPU temperature cap exceeded!")
+        messagebox.showwarning("WARNING", f"GPU temperature cap exceeded! GPU: {gpu_temp}°C | Cap: {temp}°C")
     window.after(1000, show_gpu_data)
      
 show_gpu_data()
