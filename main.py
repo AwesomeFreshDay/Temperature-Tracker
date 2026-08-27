@@ -164,8 +164,24 @@ switch_widget.select()
 
 # Tab 2
 # Creating temperature tracker
+#def temperature_tracker():
+    #while True:
+        #minutes = int(dropdown_box.get())
+
 def time_picker():
     print(dropdown_box.get())
+
+# Print the stats first
+now = datetime.now()
+time_clock = now.strftime("%I:%M:%S %p")
+cpu_usage = psutil.cpu_percent(interval=None) 
+cpu_temp = WinTmp.CPU_Temp()
+gpu_temp = WinTmp.GPU_Temp()
+ram_usage = psutil.virtual_memory().percent
+
+print(
+    f"Time: {time_clock} | Cpu_usage: {cpu_usage} | Cpu_temp: {cpu_temp} | gpu_temp: {gpu_temp} | ram_usage: {ram_usage}")
+
 
 
 time_selection = ["5 minutes", "10 minutes", "15 minutes", "20 minutes"]
