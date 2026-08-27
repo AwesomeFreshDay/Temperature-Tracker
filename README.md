@@ -6,7 +6,7 @@ Are you tired of using hardware monitor apps on Windows that are complicated and
 -
 -
 - Lock your temperature cap before the program notifies you a warning that you reached that temperature keeping your system aware and safe
--
+- Temperature tracker that shows your stats every certain number of minutes
 
 # Installation
 - This program needs to be run in administrator to work properly because of WinTMP requiring privileges to read hardware temperatures. You can run without administrator but you wouldn’t be able to see temps
