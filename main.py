@@ -172,15 +172,15 @@ def time_picker():
     print(dropdown_box.get())
 
 # Print the stats first
-now = datetime.now()
-time_clock = now.strftime("%I:%M:%S %p")
-cpu_usage = psutil.cpu_percent(interval=None) 
-cpu_temp = WinTmp.CPU_Temp()
-gpu_temp = WinTmp.GPU_Temp()
-ram_usage = psutil.virtual_memory().percent
+#now = datetime.now()
+#time_clock = now.strftime("%I:%M:%S %p")
+#cpu_usage = psutil.cpu_percent(interval=None) 
+#cpu_temp = WinTmp.CPU_Temp()
+#gpu_temp = WinTmp.GPU_Temp()
+#ram_usage = psutil.virtual_memory().percent
 
-print(
-    f"Time: {time_clock} | Cpu_usage: {cpu_usage} | Cpu_temp: {cpu_temp} | gpu_temp: {gpu_temp} | ram_usage: {ram_usage}")
+#print(
+    #f"Time: {time_clock} | Cpu_usage: {cpu_usage} | Cpu_temp: {cpu_temp} | gpu_temp: {gpu_temp} | ram_usage: {ram_usage}")
 
 
 
@@ -190,7 +190,21 @@ dropdown_box.pack()
 set_time_button = customtkinter.CTkButton(tab_2, text="Set time", command=time_picker)
 set_time_button.pack()
 
+# Make the frame
+frame = customtkinter.CTkFrame(tab_2, width=400, height=200, fg_color="#8D6F3A", border_color="#FFCC70")
+frame.pack()
+frame.grid_propagate(False)
 
+time_frame_label = customtkinter.CTkLabel(frame, text="Time")
+time_frame_label.grid(row=0, column=1, padx=8)
+cpu_usage_frame_label = customtkinter.CTkLabel(frame, text="CPU Usage")
+cpu_usage_frame_label.grid(row=0, column=2, padx=8)
+cpu_temp_frame_label = customtkinter.CTkLabel(frame, text="CPU Temp")
+cpu_temp_frame_label.grid(row=0, column=3, padx=8)
+gpu_temp_frame_label = customtkinter.CTkLabel(frame, text="GPU Temp")
+gpu_temp_frame_label.grid(row=0, column=4, padx=8)
+ram_usage_frame_label = customtkinter.CTkLabel(frame, text="Ram Usage")
+ram_usage_frame_label.grid(row=0, column=5, padx=8)
 
 
 
