@@ -195,6 +195,7 @@ frame = customtkinter.CTkFrame(tab_2, width=400, height=200, fg_color="#8D6F3A",
 frame.pack()
 frame.grid_propagate(False)
 
+# The stats on the top
 time_frame_label = customtkinter.CTkLabel(frame, text="Time")
 time_frame_label.grid(row=0, column=1, padx=8)
 cpu_usage_frame_label = customtkinter.CTkLabel(frame, text="CPU Usage")
@@ -205,6 +206,21 @@ gpu_temp_frame_label = customtkinter.CTkLabel(frame, text="GPU Temp")
 gpu_temp_frame_label.grid(row=0, column=4, padx=8)
 ram_usage_frame_label = customtkinter.CTkLabel(frame, text="Ram Usage")
 ram_usage_frame_label.grid(row=0, column=5, padx=8)
+
+# Now need to add the text on the bottom column
+time_frame = customtkinter.CTkLabel(frame, text="Time")
+time_frame.grid(row=1, column=1, padx=8)
+cpu_usage_frame = customtkinter.CTkLabel(frame, text="CPU Usage")
+cpu_usage_frame.grid(row=1, column=2, padx=8)
+cpu_temp_frame = customtkinter.CTkLabel(frame, text="CPU Temp")
+cpu_temp_frame.grid(row=1, column=3, padx=8)
+gpu_temp_frame = customtkinter.CTkLabel(frame, text="GPU Temp")
+gpu_temp_frame.grid(row=1, column=4, padx=8)
+ram_usage_frame = customtkinter.CTkLabel(frame, text="Ram Usage")
+ram_usage_frame.grid(row=1, column=5, padx=8)
+
+
+
 
 
 
