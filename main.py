@@ -171,13 +171,6 @@ switch_widget.select()
 def time_picker():
     print(dropdown_box.get())
 
-# Print the stats first
-#now = datetime.now()
-#time_clock = now.strftime("%I:%M:%S %p")
-#cpu_usage = psutil.cpu_percent(interval=None) 
-#cpu_temp = WinTmp.CPU_Temp()
-#gpu_temp = WinTmp.GPU_Temp()
-#ram_usage = psutil.virtual_memory().percent
 
 #print(
     #f"Time: {time_clock} | Cpu_usage: {cpu_usage} | Cpu_temp: {cpu_temp} | gpu_temp: {gpu_temp} | ram_usage: {ram_usage}")
@@ -191,7 +184,7 @@ set_time_button = customtkinter.CTkButton(tab_2, text="Set time", command=time_p
 set_time_button.pack()
 
 # Make the frame
-frame = customtkinter.CTkFrame(tab_2, width=400, height=200, fg_color="#8D6F3A", border_color="#FFCC70")
+frame = customtkinter.CTkFrame(tab_2, width=450, height=200, fg_color="#8D6F3A", border_color="#FFCC70")
 frame.pack()
 frame.grid_propagate(False)
 
@@ -200,24 +193,34 @@ time_frame_label = customtkinter.CTkLabel(frame, text="Time")
 time_frame_label.grid(row=0, column=1, padx=8)
 cpu_usage_frame_label = customtkinter.CTkLabel(frame, text="CPU Usage")
 cpu_usage_frame_label.grid(row=0, column=2, padx=8)
-cpu_temp_frame_label = customtkinter.CTkLabel(frame, text="CPU Temp")
+cpu_temp_frame_label = customtkinter.CTkLabel(frame, text="CPU °C")
 cpu_temp_frame_label.grid(row=0, column=3, padx=8)
-gpu_temp_frame_label = customtkinter.CTkLabel(frame, text="GPU Temp")
+gpu_temp_frame_label = customtkinter.CTkLabel(frame, text="GPU °C")
 gpu_temp_frame_label.grid(row=0, column=4, padx=8)
 ram_usage_frame_label = customtkinter.CTkLabel(frame, text="Ram Usage")
 ram_usage_frame_label.grid(row=0, column=5, padx=8)
 
+now = datetime.now()
+time_clock = now.strftime("%I:%M:%S %p")
+cpu_usage = psutil.cpu_percent(interval=None) 
+cpu_temp = WinTmp.CPU_Temp()
+gpu_temp = WinTmp.GPU_Temp()
+ram_usage = psutil.virtual_memory().percent
+
+#def add_another_row():
+
+nextrow = 1
 # Now need to add the text on the bottom column
-time_frame = customtkinter.CTkLabel(frame, text="Time")
-time_frame.grid(row=1, column=1, padx=8)
-cpu_usage_frame = customtkinter.CTkLabel(frame, text="CPU Usage")
-cpu_usage_frame.grid(row=1, column=2, padx=8)
-cpu_temp_frame = customtkinter.CTkLabel(frame, text="CPU Temp")
-cpu_temp_frame.grid(row=1, column=3, padx=8)
-gpu_temp_frame = customtkinter.CTkLabel(frame, text="GPU Temp")
-gpu_temp_frame.grid(row=1, column=4, padx=8)
-ram_usage_frame = customtkinter.CTkLabel(frame, text="Ram Usage")
-ram_usage_frame.grid(row=1, column=5, padx=8)
+time_frame = customtkinter.CTkLabel(frame, text=time_clock)
+time_frame.grid(row=nextrow, column=1, padx=8)
+cpu_usage_frame = customtkinter.CTkLabel(frame, text=cpu_usage)
+cpu_usage_frame.grid(row=nextrow, column=2, padx=8)
+cpu_temp_frame = customtkinter.CTkLabel(frame, text=cpu_temp)
+cpu_temp_frame.grid(row=nextrow, column=3, padx=8)
+gpu_temp_frame = customtkinter.CTkLabel(frame, text=gpu_temp)
+gpu_temp_frame.grid(row=nextrow, column=4, padx=8)
+ram_usage_frame = customtkinter.CTkLabel(frame, text=ram_usage)
+ram_usage_frame.grid(row=nextrow, column=5, padx=8)
 
 
 
