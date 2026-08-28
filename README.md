@@ -10,27 +10,22 @@ Are you tired of using hardware monitor apps on Windows that are complicated and
 
 # Installation
 - This program needs to be run in administrator to work properly because of WinTMP requiring privileges to read hardware temperatures. You can run without administrator but you wouldn’t be able to see temps
-- WINDOWS support only for now. This program natively supports and runs on Windows 10/11. Some features or no features like temps could not display. Support for Linux could possibly be added in the future
+- WINDOWS support only for now. This program natively supports and runs on Windows 10/11. 
 
 # Prerequisite 
 - (I think you might need it I’m not sure but it probably works without just a guess but if the program doesn’t work install this .NET 10.0 Framework
 https://dotnet.microsoft.com/en-us/download/dotnet/10.0
 - I think you might need to go to the folder installation right click both DLL files and click unblock I’m not sure again because I did that on my side but just double checking 
 
-# License
-
-
-
-
-
-
-
+# Additional Information
+- I am aware that the program is a little laggy and sometimes freezes this is due to the WinTmp library gathering hall sensor temperature or something from the computer which takes a while to load and gather so the program lags and freezes a little I put the library to load within threading to reduce the lag to the best of my ability so far if there are any tips I would be happy to take them 
 
 
 
 
 # Credits/Achknowledgements
-Python psutul library
-WinTmp Library
+Python
+psutul library - gathers cpu and ram usage
+WinTmp Library - gathers cpu and gpu temperatures 
 LibreHardware Monitor DLL file
 
