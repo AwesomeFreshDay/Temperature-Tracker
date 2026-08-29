@@ -80,8 +80,8 @@ threading.Thread(target=get_temps, daemon=True).start()
 def message():
     messagebox.showinfo("Test", "Simple messagebox")
 
-btn = Button(tab_1, text="Simple button", command=message)
-btn.pack()
+# btn = Button(tab_1, text="Simple button", command=message)
+# btn.pack()
 
 cpu_temp_slider_label = customtkinter.CTkLabel(tab_1, text="CPU Temperature Cap:")
 cpu_temp_slider_label.pack()
@@ -198,26 +198,30 @@ frame.pack()
 frame.grid_propagate(False)
 
 # The stats on the top
-time_frame_label = customtkinter.CTkLabel(frame, text="Time")
-time_frame_label.grid(row=0, column=1, padx=8)
-cpu_usage_frame_label = customtkinter.CTkLabel(frame, text="CPU Usage")
-cpu_usage_frame_label.grid(row=0, column=2, padx=8)
-cpu_temp_frame_label = customtkinter.CTkLabel(frame, text="CPU °C")
-cpu_temp_frame_label.grid(row=0, column=3, padx=8)
-gpu_temp_frame_label = customtkinter.CTkLabel(frame, text="GPU °C")
-gpu_temp_frame_label.grid(row=0, column=4, padx=8)
-ram_usage_frame_label = customtkinter.CTkLabel(frame, text="Ram Usage")
-ram_usage_frame_label.grid(row=0, column=5, padx=8)
+def the_headers():
+    time_frame_label = customtkinter.CTkLabel(frame, text="Time")
+    time_frame_label.grid(row=0, column=1, padx=8)
+    cpu_usage_frame_label = customtkinter.CTkLabel(frame, text="CPU Usage")
+    cpu_usage_frame_label.grid(row=0, column=2, padx=8)
+    cpu_temp_frame_label = customtkinter.CTkLabel(frame, text="CPU °C")
+    cpu_temp_frame_label.grid(row=0, column=3, padx=8)
+    gpu_temp_frame_label = customtkinter.CTkLabel(frame, text="GPU °C")
+    gpu_temp_frame_label.grid(row=0, column=4, padx=8)
+    ram_usage_frame_label = customtkinter.CTkLabel(frame, text="Ram Usage")
+    ram_usage_frame_label.grid(row=0, column=5, padx=8)
+the_headers()
 
 nextrow = 1
 count = 0
+stats_running = True
 
 def add_another_row():
     global nextrow
     global count
+    global stats_running
     # Run our function time picker and put what it gives to miliseconds variable
     milliseconds = time_picker()
-    if count > 2:
+    if stats_running == False:
         return
     now = datetime.now()
     time_clock = now.strftime("%I:%M:%S %p")
@@ -243,11 +247,24 @@ def reset_stats():
     global nextrow
     for row in frame.winfo_children():
         row.destroy()
+    the_headers()
     nextrow = 1
+
+def stop_pause_button():
+    global stats_running
+    stats_running = False
+
+def unpause_now():
+    global stats_running
+    stats_running = True
+
 # Create reset button
 reset_button = customtkinter.CTkButton(tab_2, text="Reset", command=reset_stats)
 reset_button.pack()
-
+stop_button = customtkinter.CTkButton(tab_2, text="Stop/Pause", command=stop_pause_button, width=60)
+stop_button.place(y=28)
+unpause_button = customtkinter.CTkButton(tab_2, text="Unpause", command=unpause_now, width=60)
+unpause_button.place(x=270, y=28)
 # MAKE SURE TO Create a seperate tab for temperature tracker next session 
 
 
