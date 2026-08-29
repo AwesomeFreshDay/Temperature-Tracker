@@ -177,7 +177,7 @@ def time_picker():
 
 
 
-time_selection = ["5 minutes", "10 minutes", "15 minutes", "20 minutes"]
+time_selection = ["10 seconds", "5 minutes", "10 minutes", "15 minutes", "20 minutes"]
 dropdown_box = customtkinter.CTkComboBox(tab_2, values=time_selection)
 dropdown_box.pack()
 set_time_button = customtkinter.CTkButton(tab_2, text="Set time", command=time_picker)
@@ -201,9 +201,13 @@ ram_usage_frame_label = customtkinter.CTkLabel(frame, text="Ram Usage")
 ram_usage_frame_label.grid(row=0, column=5, padx=8)
 
 nextrow = 1
+count = 0
 
 def add_another_row():
     global nextrow
+    global count
+    if count > 2:
+        return
     now = datetime.now()
     time_clock = now.strftime("%I:%M:%S %p")
     cpu_usage = psutil.cpu_percent(interval=None) 
@@ -222,6 +226,7 @@ def add_another_row():
     ram_usage_frame = customtkinter.CTkLabel(frame, text=ram_usage)
     ram_usage_frame.grid(row=nextrow, column=5, padx=8)
     nextrow += 1
+    count +=1
     frame.after(30000, add_another_row)
 add_another_row()
 
