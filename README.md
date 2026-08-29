@@ -15,6 +15,7 @@ Are you tired of using hardware monitor apps on Windows that are complicated and
 4. py -m pip install -r requirements.txt
 5. py main.py
 
+# Exe installation
 - Download the setup file nad proceed through installation and an exe launchable file will be added to your computer https://github.com/AwesomeFreshDay/Temperature-Tracker/releases/tag/v1.0
 - THIS PROGRAM NEEDS IT NEEDS to be run in ADMISTRATOR to launch because WinTMP requires administrator privileges to read hardware hall sensor temperatures. You 
 - WINDOWS support only for now. This program natively supports and runs on Windows 10/11. 
