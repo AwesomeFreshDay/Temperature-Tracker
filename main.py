@@ -238,7 +238,16 @@ def add_another_row():
     ram_usage_frame.grid(row=nextrow, column=5, padx=8)
     nextrow += 1
     #count +=1
-    
+
+def reset_stats():
+    global nextrow
+    for row in frame.winfo_children():
+        row.destroy()
+    nextrow = 1
+# Create reset button
+reset_button = customtkinter.CTkButton(tab_2, text="Reset", command=reset_stats)
+reset_button.pack()
+
 # MAKE SURE TO Create a seperate tab for temperature tracker next session 
 
 
