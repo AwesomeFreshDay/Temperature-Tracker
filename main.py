@@ -169,10 +169,15 @@ switch_widget.select()
         #minutes = int(dropdown_box.get())
 
 def time_picker():
-    minutes = dropdown_box.get()
-    # Convert minutes to miliseconds
-    minutes *= 1000
-    print(minutes)
+    unconverted_numbers = dropdown_box.get()
+    # Convert string to number
+    string_number = int(unconverted_numbers.split()[0])
+    if "seconds" in unconverted_numbers:
+        milliseconds = string_number * 1000
+    else: 
+        # If it dont contain seconds, its minute so multiply along with 60
+        milliseconds = string_number * 60 * 1000
+    print(milliseconds)
     
 #print(
     #f"Time: {time_clock} | Cpu_usage: {cpu_usage} | Cpu_temp: {cpu_temp} | gpu_temp: {gpu_temp} | ram_usage: {ram_usage}")
@@ -230,7 +235,7 @@ def add_another_row():
     nextrow += 1
     #count +=1
     frame.after(30000, add_another_row)
-add_another_row()
+
 
 
 
