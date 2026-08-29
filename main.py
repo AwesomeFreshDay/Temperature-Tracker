@@ -200,28 +200,30 @@ gpu_temp_frame_label.grid(row=0, column=4, padx=8)
 ram_usage_frame_label = customtkinter.CTkLabel(frame, text="Ram Usage")
 ram_usage_frame_label.grid(row=0, column=5, padx=8)
 
-now = datetime.now()
-time_clock = now.strftime("%I:%M:%S %p")
-cpu_usage = psutil.cpu_percent(interval=None) 
-cpu_temp = WinTmp.CPU_Temp()
-gpu_temp = WinTmp.GPU_Temp()
-ram_usage = psutil.virtual_memory().percent
-
-#def add_another_row():
-
 nextrow = 1
-# Now need to add the text on the bottom column
-time_frame = customtkinter.CTkLabel(frame, text=time_clock)
-time_frame.grid(row=nextrow, column=1, padx=8)
-cpu_usage_frame = customtkinter.CTkLabel(frame, text=cpu_usage)
-cpu_usage_frame.grid(row=nextrow, column=2, padx=8)
-cpu_temp_frame = customtkinter.CTkLabel(frame, text=cpu_temp)
-cpu_temp_frame.grid(row=nextrow, column=3, padx=8)
-gpu_temp_frame = customtkinter.CTkLabel(frame, text=gpu_temp)
-gpu_temp_frame.grid(row=nextrow, column=4, padx=8)
-ram_usage_frame = customtkinter.CTkLabel(frame, text=ram_usage)
-ram_usage_frame.grid(row=nextrow, column=5, padx=8)
 
+def add_another_row():
+    global nextrow
+    now = datetime.now()
+    time_clock = now.strftime("%I:%M:%S %p")
+    cpu_usage = psutil.cpu_percent(interval=None) 
+    cpu_temp = WinTmp.CPU_Temp()
+    gpu_temp = WinTmp.GPU_Temp()
+    ram_usage = psutil.virtual_memory().percent
+    # Now need to add the text on the bottom column
+    time_frame = customtkinter.CTkLabel(frame, text=time_clock)
+    time_frame.grid(row=nextrow, column=1, padx=8)
+    cpu_usage_frame = customtkinter.CTkLabel(frame, text=cpu_usage)
+    cpu_usage_frame.grid(row=nextrow, column=2, padx=8)
+    cpu_temp_frame = customtkinter.CTkLabel(frame, text=cpu_temp)
+    cpu_temp_frame.grid(row=nextrow, column=3, padx=8)
+    gpu_temp_frame = customtkinter.CTkLabel(frame, text=gpu_temp)
+    gpu_temp_frame.grid(row=nextrow, column=4, padx=8)
+    ram_usage_frame = customtkinter.CTkLabel(frame, text=ram_usage)
+    ram_usage_frame.grid(row=nextrow, column=5, padx=8)
+    nextrow += 1
+    frame.after(30000, add_another_row)
+add_another_row()
 
 
 
