@@ -169,9 +169,11 @@ switch_widget.select()
         #minutes = int(dropdown_box.get())
 
 def time_picker():
-    print(dropdown_box.get())
-
-
+    minutes = dropdown_box.get()
+    # Convert minutes to miliseconds
+    minutes *= 1000
+    print(minutes)
+    
 #print(
     #f"Time: {time_clock} | Cpu_usage: {cpu_usage} | Cpu_temp: {cpu_temp} | gpu_temp: {gpu_temp} | ram_usage: {ram_usage}")
 
@@ -226,7 +228,7 @@ def add_another_row():
     ram_usage_frame = customtkinter.CTkLabel(frame, text=ram_usage)
     ram_usage_frame.grid(row=nextrow, column=5, padx=8)
     nextrow += 1
-    count +=1
+    #count +=1
     frame.after(30000, add_another_row)
 add_another_row()
 
