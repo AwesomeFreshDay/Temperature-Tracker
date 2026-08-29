@@ -8,6 +8,13 @@ Are you tired of using hardware monitor apps on Windows that are complicated and
 - Dark mode/light mode
 
 # Installation
+## READ THIS IF YOU ARE RUNNING THIS PROGRAM FROM THE TERMINAL
+1. Run the terminal as admistrator(important or an error will throw when launching the program
+2. git clone https://github.com/AwesomeFreshDay/Temperature-Tracker.git
+3. cd temperature-tracker
+4. py -m pip install -r requirements.txt
+5. py main.py
+
 - Download the setup file nad proceed through installation and an exe launchable file will be added to your computer https://github.com/AwesomeFreshDay/Temperature-Tracker/releases/tag/v1.0
 - THIS PROGRAM NEEDS IT NEEDS to be run in ADMISTRATOR to launch because WinTMP requires administrator privileges to read hardware hall sensor temperatures. You 
 - WINDOWS support only for now. This program natively supports and runs on Windows 10/11. 
