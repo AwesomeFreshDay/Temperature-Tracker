@@ -178,6 +178,8 @@ def time_picker():
         # If it dont contain seconds, its minute so multiply along with 60
         milliseconds = string_number * 60 * 1000
     print(milliseconds)
+    frame.after(milliseconds, add_another_row)
+    return milliseconds
     
 #print(
     #f"Time: {time_clock} | Cpu_usage: {cpu_usage} | Cpu_temp: {cpu_temp} | gpu_temp: {gpu_temp} | ram_usage: {ram_usage}")
@@ -191,7 +193,7 @@ set_time_button = customtkinter.CTkButton(tab_2, text="Set time", command=time_p
 set_time_button.pack()
 
 # Make the frame
-frame = customtkinter.CTkFrame(tab_2, width=450, height=200, fg_color="#8D6F3A", border_color="#FFCC70")
+frame = customtkinter.CTkFrame(tab_2, width=450, height=245, fg_color="#8D6F3A", border_color="#FFCC70")
 frame.pack()
 frame.grid_propagate(False)
 
@@ -213,6 +215,8 @@ count = 0
 def add_another_row():
     global nextrow
     global count
+    # Run our function time picker and put what it gives to miliseconds variable
+    milliseconds = time_picker()
     if count > 2:
         return
     now = datetime.now()
@@ -234,15 +238,7 @@ def add_another_row():
     ram_usage_frame.grid(row=nextrow, column=5, padx=8)
     nextrow += 1
     #count +=1
-    frame.after(30000, add_another_row)
-
-
-
-
-
-
-
-
+    
 # MAKE SURE TO Create a seperate tab for temperature tracker next session 
 
 
