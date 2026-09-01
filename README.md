@@ -17,7 +17,9 @@ Are you tired of using hardware monitor apps on Windows that are complicated and
 
 # Exe installation
 - Download the setup file and  proceed through installation and an exe launchable file will be added to your computer https://github.com/AwesomeFreshDay/Temperature-Tracker/releases/tag/v1.0
-- THIS PROGRAM NEEDS IT NEEDS to be run in ADMISTRATOR to launch because WinTMP requires administrator privileges to read hardware hall sensor temperatures. 
+- THIS PROGRAM NEEDS IT NEEDS to be run in ADMISTRATOR to launch because WinTMP requires administrator privileges to read hardware hall sensor temperatures.
+- This program cannot be run in a VM(Virtual Machine) the program will not launch and will display a TypeError. This is because the program tries to fetch temps but VMs don’t have readable temperatures
+- Windows defender may mark the program as a false positive for some people if this happens turn it off temporarily
 - WINDOWS support only for now. This program natively supports and runs on Windows 10/11. 
 
 # Prerequisite 
