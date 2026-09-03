@@ -138,6 +138,8 @@ show_temp_data()
 # FUnction for gpu temp output
 
 def show_gpu_data():
+    if temp is None:
+        return
     global while_gpu_running
     gpu_temp = WinTmp.GPU_Temp()
     temp = int(gpu_slider.get())
