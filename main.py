@@ -127,7 +127,7 @@ def show_temp_data():
    cpu_temp = WinTmp.CPU_Temp()
    temp = int(slider.get())
    if cpu_temp is None or cpu_temp > 130:
-          print("Invalid temperature either this is being run on a VM or pc that cannot be read")
+          print("Invalid CPU temperature either this is being run on a VM or pc that cannot be read")
           return
    if cpu_temp > temp and while_cpu_running == False:
            while_cpu_running = True
@@ -145,7 +145,7 @@ def show_gpu_data():
     gpu_temp = WinTmp.GPU_Temp()
     temp = int(gpu_slider.get())
     if gpu_temp is None or gpu_temp > 120:
-           print("Invalid temperature either this is being run on a VM or pc that cannot be read")
+           print("Invalid GPU temperature either this is being run on a VM or pc that cannot be read")
            return
     if gpu_temp > temp and while_gpu_running == False:
         while_gpu_running = True
