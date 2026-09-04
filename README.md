@@ -20,7 +20,7 @@ Are you tired of using hardware monitor apps on Windows that are complicated and
 - THIS PROGRAM NEEDS IT NEEDS to be run in ADMISTRATOR to launch because WinTMP requires administrator privileges to read hardware hall sensor temperatures.
 
 # If errors occur 
-- This program cannot be run in a VM(Virtual Machine) the program will not launch and will display a TypeError. This is because the program tries to fetch temps but VMs don’t have readable temperatures
+- This program can be run in a VM(Virtual Machine) or any computer with unreadable temperatures but cpu and gpu temp will show as none. Every other feature besides temp will continue to work.
 - Windows defender may mark the program as a false positive for some people if this happens turn it off temporarily
 - WINDOWS support only for now. This program natively supports and runs on Windows 10/11. 
 
