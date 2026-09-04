@@ -123,6 +123,8 @@ while_gpu_running = False
 
 # Function to get temperature input and store on screen for the cpu
 def show_temp_data():
+   if temp is None:
+       return
    global while_cpu_running
    cpu_temp = WinTmp.CPU_Temp()
    temp = int(slider.get())
