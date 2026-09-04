@@ -126,7 +126,7 @@ def show_temp_data():
    global while_cpu_running
    cpu_temp = WinTmp.CPU_Temp()
    temp = int(slider.get())
-   if temp is None:
+   if cpu_temp is None:
           return
    if cpu_temp > temp and while_cpu_running == False:
            while_cpu_running = True
@@ -143,7 +143,7 @@ def show_gpu_data():
     global while_gpu_running
     gpu_temp = WinTmp.GPU_Temp()
     temp = int(gpu_slider.get())
-    if temp is None:
+    if gpu_temp is None:
            return
     if gpu_temp > temp and while_gpu_running == False:
         while_gpu_running = True
